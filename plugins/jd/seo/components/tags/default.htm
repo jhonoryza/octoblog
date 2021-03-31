@@ -1,0 +1,21 @@
+{% partial '@title' %}
+
+{% if __SELF__.meta.description %}
+	{% partial '@description' %}
+{% endif %}
+
+{% if __SELF__.meta.keywords %}
+	{% partial '@keywords' %}
+{% endif %}
+
+{% if __SELF__.meta.og %}
+	{% partial '@og' %}
+{% endif %}
+
+{% if __SELF__.meta.schema %}
+	{% partial '@schema' %}
+{% endif %}
+
+{% if __SELF__.meta.twitter %}
+	{% partial '@twitter' %}
+{% endif %}

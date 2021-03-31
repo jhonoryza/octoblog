@@ -1,0 +1,18 @@
+title = "Archieves"
+url = "/archieves"
+layout = "default"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 1000
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = 404
+postPage = "blog/post"
+==
+{% put styles %}
+	<link href="https://fonts.googleapis.com/css?family=Amaranth|Dosis" rel="stylesheet">
+    <link href="/themes/krisawzm-simply-blog/assets/css/custom.css" rel="stylesheet">
+{% endput %}
+{% partial 'blogArchieves' %}

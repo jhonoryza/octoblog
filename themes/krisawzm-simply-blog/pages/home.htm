@@ -1,0 +1,42 @@
+title = "Home"
+url = "/"
+layout = "default"
+meta_title = "doitcode - just do it"
+meta_description = "Sebuah catatan serba serbi tentang teknologi, linux dan programming"
+is_hidden = 0
+seo_keywords = "linux programming code"
+robot_index = "index"
+robot_follow = "follow"
+==
+<?php
+//function onStart()
+//{
+   //return redirect("/page/1");
+//}
+?>
+==
+{% put styles %}
+	<link href="https://fonts.googleapis.com/css?family=Amaranth|Dosis" rel="stylesheet">
+    <link href="/themes/krisawzm-simply-blog/assets/css/custom.css" rel="stylesheet">
+{% endput %}
+<h1>Welcome to my blog</h1></br></br>
+
+<h2>About</h2></br>
+
+<p>Hi, perkenalkan saya Fajar Sidik Priatna,
+seorang developer web, desktop, mobile dan embedded system yg tinggal di Indonesia tepatnya di Bandung. alumni pesantren persatuan islam 1 (pajagalan) bandung, lulus dari Departement Fisika penjurusan Instrumentasi Elektronika di Universitas Padjadjaran tahun 2014.
+jika kalian menemukan bug atau ada sesuatu yg ingin disampaikan, kalian dapat menghubungi contact saya dibawah ini..</p></br></br>
+
+<h2>Contact</h2></br>
+    <header class="side-header">
+    <ul class="social-icons">
+      {% for btn in this.theme.social_buttons %}
+        <li>
+          <a class="btn-social fa-{{ btn.fa }}" href="{{ btn.href }}" style="background-color: {{ btn.color }};"></a>
+        </li>
+      {% endfor %}
+    </ul>
+    </header>
+    <p>or mail: jardik.oryza@gmail.com.</p></br></br>
+
+<h4>You can click <a href="{{ url("/page/1") }}">HERE</a> to see my recent posts<h4>

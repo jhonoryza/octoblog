@@ -1,0 +1,1 @@
+1603633055a:5:{s:4:"name";s:27:"cms::lang.theme.theme_label";s:4:"form";a:0:{}s:10:"modelClass";s:20:"Cms\Models\ThemeData";s:15:"defaultRedirect";s:10:"cms/themes";s:6:"update";a:3:{s:5:"title";s:31:"cms::lang.theme.customize_theme";s:8:"redirect";s:10:"cms/themes";s:13:"redirectClose";s:10:"cms/themes";}}

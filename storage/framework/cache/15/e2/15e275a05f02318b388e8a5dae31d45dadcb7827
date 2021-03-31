@@ -1,0 +1,59 @@
+1602670382a:1:{s:20:"blogPostsListRaw.htm";a:6:{s:8:"fileName";s:20:"blogPostsListRaw.htm";s:7:"content";s:1065:"[viewBag]
+==
+{% for post in blogPosts.posts %}
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <h2 class="post-title">
+      <a href="{{ post.url }}" itemprop="url">
+        <span itemprop="headline">{{ post.title }}</span>
+      </a>
+    </h2>
+
+    <p class="post-excerpt" itemprop="description">{{ post.excerpt }}</p>
+
+    <p class="post-info">
+      Posted
+      {% if post.categories.count %} in
+          <span itemprop="keywords">
+          {% for category in post.categories %}
+              <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+          </span>
+      {% endif %}
+      on <time itemprop="datePublished" datetime="{{ post.published_at|date('Y-m-d') }}">{{ post.published_at|date('M d, Y') }}</time>
+      by <span itemprop="author">{{ post.user.full_name }}</span>
+      <span class="disqus-comment-count" data-disqus-url="{{post.url}}"> <!-- Count will be inserted here --> </span>
+    </p>
+
+  </article>
+
+{% endfor %}";s:5:"mtime";i:1509115938;s:6:"markup";s:1050:"{% for post in blogPosts.posts %}
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <h2 class="post-title">
+      <a href="{{ post.url }}" itemprop="url">
+        <span itemprop="headline">{{ post.title }}</span>
+      </a>
+    </h2>
+
+    <p class="post-excerpt" itemprop="description">{{ post.excerpt }}</p>
+
+    <p class="post-info">
+      Posted
+      {% if post.categories.count %} in
+          <span itemprop="keywords">
+          {% for category in post.categories %}
+              <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+          </span>
+      {% endif %}
+      on <time itemprop="datePublished" datetime="{{ post.published_at|date('Y-m-d') }}">{{ post.published_at|date('M d, Y') }}</time>
+      by <span itemprop="author">{{ post.user.full_name }}</span>
+      <span class="disqus-comment-count" data-disqus-url="{{post.url}}"> <!-- Count will be inserted here --> </span>
+    </p>
+
+  </article>
+
+{% endfor %}";s:4:"code";N;s:7:"viewBag";a:0:{}}}

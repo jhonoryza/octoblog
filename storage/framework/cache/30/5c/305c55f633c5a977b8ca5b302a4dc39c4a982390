@@ -1,0 +1,30 @@
+1602479265a:1:{s:17:"blogArchieves.htm";a:6:{s:8:"fileName";s:17:"blogArchieves.htm";s:7:"content";s:332:"==
+<section class="posts-list">
+
+  <h1 class="content-heading">{{ this.page.title }}</h1>
+
+  {% for post in blogPosts.posts %}
+    
+    <h4 class="post-title">
+      <a href="{{ post.url }}" itemprop="url">
+        <span itemprop="headline">{{ post.title }} </span>
+      </a>
+    </h4>
+   
+  {% endfor %}
+
+</section>";s:5:"mtime";i:1508948108;s:6:"markup";s:328:"<section class="posts-list">
+
+  <h1 class="content-heading">{{ this.page.title }}</h1>
+
+  {% for post in blogPosts.posts %}
+    
+    <h4 class="post-title">
+      <a href="{{ post.url }}" itemprop="url">
+        <span itemprop="headline">{{ post.title }} </span>
+      </a>
+    </h4>
+   
+  {% endfor %}
+
+</section>";s:4:"code";N;s:17:"_PARSER_ERROR_INI";s:0:"";}}

@@ -1,0 +1,32 @@
+title = "Blog Category"
+url = "/tag/:slug/:page?"
+layout = "default"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "{{ :slug }}"
+postsPerPage = 20
+noPostsMessage = "No posts found!"
+sortOrder = "published_at desc"
+categoryPage = "blog/tag"
+postPage = "blog/post"
+==
+<?php
+function onEnd()
+{
+  if (isset($this['category'])) {
+    $this->page->title = $this->category->name;
+    // $this->page->description = $this->post->excerpt;
+  }
+  else {
+    return $this->controller->run('/404');
+  }
+}
+?>
+==
+{% put styles %}
+	<link href="https://fonts.googleapis.com/css?family=Amaranth|Dosis" rel="stylesheet">
+    <link href="/themes/krisawzm-simply-blog/assets/css/custom.css" rel="stylesheet">
+{% endput %}
+{% partial 'blogPostsList' %}

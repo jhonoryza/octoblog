@@ -1,0 +1,1 @@
+1596864954a:4:{s:5:"1.1.0";a:2:{i:0;s:46:"Add LinkedIn, Reddit and Digg (icon dependent)";i:1;s:46:"Enable/Disable provider from component setting";}s:5:"1.0.3";a:2:{i:0;s:24:"Add Tumblr (@bkrajendra)";i:1;s:4:"Typo";}s:5:"1.0.2";a:3:{i:0;s:16:"Support onRender";i:1;s:20:"Remove unused method";i:2;s:20:"Update documentation";}s:5:"1.0.1";s:22:"First version of Share";}

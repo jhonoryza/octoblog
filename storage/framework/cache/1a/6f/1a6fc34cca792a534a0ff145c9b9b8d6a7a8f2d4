@@ -1,0 +1,230 @@
+1602670381a:1:{s:13:"blog/post.htm";a:10:{s:8:"fileName";s:13:"blog/post.htm";s:7:"content";s:4285:"title = "Blog Post"
+url = "/:slug"
+layout = "default"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/tag"
+==
+<?php
+function onEnd()
+{
+  if (isset($this['post'])) {
+    $this->page->title = $this->post->title;
+    $this->page->description = $this->post->excerpt;
+
+    if (count($this->post->featured_images) != 0) {
+      $this['metaImage'] = URL::to($this->post->featured_images[0]->path);
+    }
+  }
+  else {
+    return $this->controller->run('/404');
+  }
+}
+?>
+==
+{% put styles %}
+	<link href="https://fonts.googleapis.com/css?family=Amaranth|Dosis" rel="stylesheet">
+    <link href="/themes/krisawzm-simply-blog/assets/css/custom.css" rel="stylesheet">
+{% endput %}
+{% set post = blogPost.post %}
+
+<article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
+
+  <header class="blog-header">
+
+    <h1 class="content-heading" itemprop="headline">{{ post.title }}</h1>
+
+    {% for image in post.featured_images %}
+
+      <img class="blog-featured-image" src="{{ image.path|app }}" alt="{{ image.description }}" itemprop="image">
+
+    {% endfor %}
+
+    {% if post.excerpt %}
+
+      <p class="lead blog-excerpt" itemprop="description">{{ post.excerpt }}</p>
+
+    {% endif %}
+
+  </header>
+
+  <div class="markdown-body" itemprop="articleBody">
+    {{ post.content_html|raw }}
+  </div>
+
+  <footer class="blog-footer">
+
+    <hr>
+
+    <p class="info">
+        Posted
+        {% if post.categories.count %} in
+            <span itemprop="keywords">
+              {% for category in post.categories %}
+                  <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </span>
+        {% endif %}
+        on <time itemprop="datePublished" datetime="{{ post.published_at|date('Y-m-d') }}">{{ post.published_at|date('M d, Y') }}</time>
+        by <span itemprop="author">{{ post.user.full_name }}</span>
+    </p>
+
+    <div class="btn-share-group">
+
+      <span class="btn-share btn-share-label">Share this post:</span>
+
+      {% set url = ''|page|url_encode %}
+      {% set title = post.title|url_encode %}
+
+      {% set social = [
+        ['facebook',    'Facebook',    'https://www.facebook.com/sharer/sharer.php?u=' ~ url],
+        ['gplus',       'Google+',     'https://plus.google.com/share?url=' ~ url],
+        ['twitter',     'Twitter',     'https://twitter.com/home?status=' ~ url],
+        ['reddit',      'Reddit',      'https://reddit.com/submit?url=' ~ url ~ '&amp;title=' ~ title],
+        ['tumblr',      'Tumblr',      'https://tumblr.com/widgets/share/tool?canonicalUrl=' ~ url],
+        ['stumbleupon', 'StumbleUpon', 'https://www.stumbleupon.com/submit?url=' ~ url ~ '&amp;title=' ~ title],
+        ['linkedin',    'LinkedIn',    'https://www.linkedin.com/shareArticle?url=' ~ url ~ '&amp;mini=true&amp;title=' ~ title ~ '&amp;summary=' ~ post.excerpt|url_encode ~ '&amp;source=' ~ url],
+      ] %}
+
+      {% for n in social %}
+
+        <a class="btn-share btn-share-{{ n[0] }}" href="{{ n[2]|raw }}" target="_blank" title="Share on {{ n[1] }}" aria-label="Share on {{ n[1] }}" role="button"></a>
+
+      {% endfor %}
+
+    </div>
+    
+  </footer>
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-jardik-xyz.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</article>";s:5:"mtime";i:1512447449;s:6:"markup";s:3787:"{% put styles %}
+	<link href="https://fonts.googleapis.com/css?family=Amaranth|Dosis" rel="stylesheet">
+    <link href="/themes/krisawzm-simply-blog/assets/css/custom.css" rel="stylesheet">
+{% endput %}
+{% set post = blogPost.post %}
+
+<article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
+
+  <header class="blog-header">
+
+    <h1 class="content-heading" itemprop="headline">{{ post.title }}</h1>
+
+    {% for image in post.featured_images %}
+
+      <img class="blog-featured-image" src="{{ image.path|app }}" alt="{{ image.description }}" itemprop="image">
+
+    {% endfor %}
+
+    {% if post.excerpt %}
+
+      <p class="lead blog-excerpt" itemprop="description">{{ post.excerpt }}</p>
+
+    {% endif %}
+
+  </header>
+
+  <div class="markdown-body" itemprop="articleBody">
+    {{ post.content_html|raw }}
+  </div>
+
+  <footer class="blog-footer">
+
+    <hr>
+
+    <p class="info">
+        Posted
+        {% if post.categories.count %} in
+            <span itemprop="keywords">
+              {% for category in post.categories %}
+                  <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </span>
+        {% endif %}
+        on <time itemprop="datePublished" datetime="{{ post.published_at|date('Y-m-d') }}">{{ post.published_at|date('M d, Y') }}</time>
+        by <span itemprop="author">{{ post.user.full_name }}</span>
+    </p>
+
+    <div class="btn-share-group">
+
+      <span class="btn-share btn-share-label">Share this post:</span>
+
+      {% set url = ''|page|url_encode %}
+      {% set title = post.title|url_encode %}
+
+      {% set social = [
+        ['facebook',    'Facebook',    'https://www.facebook.com/sharer/sharer.php?u=' ~ url],
+        ['gplus',       'Google+',     'https://plus.google.com/share?url=' ~ url],
+        ['twitter',     'Twitter',     'https://twitter.com/home?status=' ~ url],
+        ['reddit',      'Reddit',      'https://reddit.com/submit?url=' ~ url ~ '&amp;title=' ~ title],
+        ['tumblr',      'Tumblr',      'https://tumblr.com/widgets/share/tool?canonicalUrl=' ~ url],
+        ['stumbleupon', 'StumbleUpon', 'https://www.stumbleupon.com/submit?url=' ~ url ~ '&amp;title=' ~ title],
+        ['linkedin',    'LinkedIn',    'https://www.linkedin.com/shareArticle?url=' ~ url ~ '&amp;mini=true&amp;title=' ~ title ~ '&amp;summary=' ~ post.excerpt|url_encode ~ '&amp;source=' ~ url],
+      ] %}
+
+      {% for n in social %}
+
+        <a class="btn-share btn-share-{{ n[0] }}" href="{{ n[2]|raw }}" target="_blank" title="Share on {{ n[1] }}" aria-label="Share on {{ n[1] }}" role="button"></a>
+
+      {% endfor %}
+
+    </div>
+    
+  </footer>
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://blog-jardik-xyz.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</article>";s:4:"code";s:355:"function onEnd()
+{
+  if (isset($this['post'])) {
+    $this->page->title = $this->post->title;
+    $this->page->description = $this->post->excerpt;
+
+    if (count($this->post->featured_images) != 0) {
+      $this['metaImage'] = URL::to($this->post->featured_images[0]->path);
+    }
+  }
+  else {
+    return $this->controller->run('/404');
+  }
+}";s:5:"title";s:9:"Blog Post";s:3:"url";s:6:"/:slug";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:8:"blogPost";a:2:{s:4:"slug";s:11:"{{ :slug }}";s:12:"categoryPage";s:8:"blog/tag";}}}

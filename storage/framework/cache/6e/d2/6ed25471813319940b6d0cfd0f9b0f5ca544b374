@@ -1,0 +1,45 @@
+1615211331a:1:{s:12:"blog/tag.htm";a:10:{s:8:"fileName";s:12:"blog/tag.htm";s:7:"content";s:767:"title = "Blog Category"
+url = "/tag/:slug/:page?"
+layout = "default"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "{{ :slug }}"
+postsPerPage = 20
+noPostsMessage = "No posts found!"
+sortOrder = "published_at desc"
+categoryPage = "blog/tag"
+postPage = "blog/post"
+==
+<?php
+function onEnd()
+{
+  if (isset($this['category'])) {
+    $this->page->title = $this->category->name;
+    // $this->page->description = $this->post->excerpt;
+  }
+  else {
+    return $this->controller->run('/404');
+  }
+}
+?>
+==
+{% put styles %}
+	<link href="https://fonts.googleapis.com/css?family=Amaranth|Dosis" rel="stylesheet">
+    <link href="/themes/krisawzm-simply-blog/assets/css/custom.css" rel="stylesheet">
+{% endput %}
+{% partial 'blogPostsList' %}";s:5:"mtime";i:1512447363;s:6:"markup";s:236:"{% put styles %}
+	<link href="https://fonts.googleapis.com/css?family=Amaranth|Dosis" rel="stylesheet">
+    <link href="/themes/krisawzm-simply-blog/assets/css/custom.css" rel="stylesheet">
+{% endput %}
+{% partial 'blogPostsList' %}";s:4:"code";s:227:"function onEnd()
+{
+  if (isset($this['category'])) {
+    $this->page->title = $this->category->name;
+    // $this->page->description = $this->post->excerpt;
+  }
+  else {
+    return $this->controller->run('/404');
+  }
+}";s:5:"title";s:13:"Blog Category";s:3:"url";s:17:"/tag/:slug/:page?";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:9:"blogPosts";a:7:{s:10:"pageNumber";s:11:"{{ :page }}";s:14:"categoryFilter";s:11:"{{ :slug }}";s:12:"postsPerPage";s:2:"20";s:14:"noPostsMessage";s:15:"No posts found!";s:9:"sortOrder";s:17:"published_at desc";s:12:"categoryPage";s:8:"blog/tag";s:8:"postPage";s:9:"blog/post";}}}
