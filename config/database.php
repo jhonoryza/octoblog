@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => 'localhost',
+            'host'      => '172.17.0.1',
             'port'      => 3306,
             'database'  => 'octo',
             'username'  => 'root',
-            'password'  => '.',
+            'password'  => 'secret',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -117,7 +117,7 @@ return [
         'cluster' => false,
 
         'default' => [
-            'host'     => '127.0.0.1',
+            'host'     => '172.17.0.1',
             'password' => null,
             'port'     => 6379,
             'database' => 0,
